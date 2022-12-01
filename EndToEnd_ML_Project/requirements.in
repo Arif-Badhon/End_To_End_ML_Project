@@ -1,0 +1,10 @@
+fastapi
+pandas
+numpy
+sklearn
+#pickle
+uvicorn
+seaborn
+matplotlib
+requests
+uvicorn
