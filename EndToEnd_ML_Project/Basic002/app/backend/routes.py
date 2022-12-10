@@ -10,6 +10,8 @@ mlmodel = APIRouter()
 #load the model
 
 regmodel = pickle.load(open('/Volumes/Badhon/Project/Personal Project/ML Project/End_To_End_ML_Project/EndToEnd_ML_Project/Basic002/regmodel.pkl', 'rb'))
+scaler = pickle.load(open('/Volumes/Badhon/Project/Personal Project/ML Project/End_To_End_ML_Project/EndToEnd_ML_Project/Basic002/scaling.pkl', 'rb'))
+
 
 @mlmodel.get('/')
 def home():
@@ -20,4 +22,6 @@ def home():
 @mlmodel.post('/predict')
 def predict(data : prediction):
     data  = data.__dict__
+    data = list(data.values())
+    data = scaler.transform(np.array(data).reshape(1,-1))
     return data
